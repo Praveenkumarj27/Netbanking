@@ -1,0 +1,43 @@
+#profile {
+  display: flex;
+}
+.heading {
+  margin-top: 20px;
+  margin-left: 60px;
+}
+#profile-1 {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#profile-2 {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#profile-3 {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  margin-left: 90px;
+  padding-right: 240px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#show-balance{
+  margin-left: 10px;
+}
+
+
+#edit-profile{
+margin-left: 800px;
+}
+
+#logout-btn{
+  margin-left:50px
+}

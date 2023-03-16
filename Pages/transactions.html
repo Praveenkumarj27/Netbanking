@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../assets/jQuery/jQuery.js" rel="javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script
+      src="../assets/bootstrap/js/bootstrap.min.js"
+      rel="javascript"
+    ></script>
+    <script src="../Js/transactions.js"></script>
+    <link href="../CSS/sidebar.css" rel="stylesheet" />
+    <link rel="icon" href="../assets//images/logo.ico">
+    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+
+
+   
+    <title>Transactions</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav sidebar-nav">
+            <div class="sidebar-header">
+              <div class="sidebar-brand">
+                <a href="#"> Clayfin Bank </a>
+              </div>
+            </div>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./moneyTransfer.html">Money Transfer</a></li>
+            <li><a href="./transactions.html">Transactions </a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="#" id="logout">Logout </a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12" id="heading"><h3>Transactions</h3></div>
+
+             <div class="col-lg-4">
+                <input type="text" class="form-control" id="search-input" placeholder="search"> 
+              </div> 
+
+              <div class="col-lg-12">
+                
+               
+                <table class="table mt-2" id="myDataTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Account number</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="myTable">
+                    <!-- <tr id="new">
+                      <td scope="row" id="s-no"></td>
+                      <td id="name"></td>
+                      <td id="account-number"></td>
+                      <td id="date"></td>
+                      <td id="time"></td>
+                      <td id="amount"></td>
+                      <td class="status"></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

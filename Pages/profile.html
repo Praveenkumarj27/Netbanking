@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <script
+      src="../assets/bootstrap/js/bootstrap.min.js"
+      rel="javascript"
+    ></script>
+    <link href="../CSS/profile.css" rel="stylesheet" />
+    <link href="../CSS/sidebar.css" rel="stylesheet" />
+    <script src="../Js/profile.js"></script>
+    <link rel="icon" href="../assets//images/logo.ico" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav sidebar-nav">
+            <div class="sidebar-header">
+              <div class="sidebar-brand">
+                <a href="#"> Clayfin Bank </a>
+              </div>
+            </div>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./moneyTransfer.html">Money Transfer</a></li>
+            <li><a href="./transactions.html">Transactions </a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="#" id="logout"> Logout </a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main-content">
+          <div class="container">
+            <div class="row">
+              <h2>Profile</h2>
+              <a
+                type="button"
+                class="btn btn-warning"
+                id="edit-profile"
+                href="./editProfile.html"
+                >Edit Profile</a
+              >
+              <div class="col-lg-12">
+                <div class="col-lg-6" id="profile">
+                  <div class="col-lg-4" id="profile-1">
+                    <p class="form-label">Balance</p>
+                    <!-- <p class="form-label"><b>₹ </b><p id="balance"></p></p> -->
+                    <div id="balance-container">
+                      <div id="current-balance"></div>
+
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="enter otp"
+                        id="enter-otp"
+                      />
+                      <button class="btn btn-primary mt-3" id="submit">
+                        Submit
+                      </button>
+
+                      <p>
+                        <a
+                          href="#unique"
+                          type="button"
+                          class="btn btn-primary"
+                          id="view-balance"
+                          >View Balance</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6" id="profile-2">
+                    <p class="form-label">Contact Details:</p>
+                    <p class="form-label">
+                      <b>Email:</b><label id="email"></label>
+                    </p>
+                    <p class="form-label">
+                      <b>Mobile:</b> <label id="mobile"></label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12" id="profile-3">
+                  <h4>Account Details:</h4>
+                  <div>
+                    <b>Name:</b>
+                    <label id="name"></label>
+                  </div>
+                  <div>
+                    <b>Father's Name:</b>
+                    <label id="fathers-name"></label>
+                  </div>
+                  <div>
+                    <b>Account Number:</b>
+                    <label id="account-number"></label>
+                  </div>
+                  <div>
+                    <b>Aadhar Number:</b>
+                    <label id="aadhar-number"></label>
+                  </div>
+                  <div>
+                    <b>Pan Number:</b>
+                    <label id="pan-number"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

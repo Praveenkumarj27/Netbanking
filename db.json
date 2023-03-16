@@ -1,0 +1,313 @@
+{
+  "users": [
+    {
+      "name": "Praveen",
+      "email": "praveen@gmail.com",
+      "mobile": "7708384828",
+      "accountNumber": "CB001",
+      "address": "2/84,Yadavar Street,Pudupattu.",
+      "fName": "Jayapalan",
+      "mName": "Daaaaaaa",
+      "pan": "JYFPK3109R",
+      "aadhar": "786843249854",
+      "password": "qwerty",
+      "confirmPassword": "qwerty",
+      "id": 1
+    },
+    {
+      "name": "Arun",
+      "email": "arun@gmail.com",
+      "mobile": "6183926349",
+      "accountNumber": "CB002",
+      "address": "Chennai",
+      "fName": "Yaaaaa",
+      "mName": "Daaaaaaa",
+      "pan": "AR9780Y",
+      "aadhar": "785798958329",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 2
+    },
+    {
+      "name": "Arjun",
+      "email": "arjun@gmail.com",
+      "mobile": "1234567890",
+      "accountNumber": "CB003",
+      "address": "chennai",
+      "fName": "Yaaaaa",
+      "mName": "Daaaaaaa",
+      "pan": "JP7875R",
+      "aadhar": "786843249854",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 3
+    },
+    {
+      "name": "Vignesh",
+      "email": "vignesh@gmail.com",
+      "mobile": "7698938615",
+      "accountNumber": "CB004",
+      "address": "Chennai",
+      "fName": "Yaaaa",
+      "mName": "Daaaa",
+      "pan": "VG7840N",
+      "aadhar": "698647830158",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 4
+    },
+    {
+      "name": "Shanmugam",
+      "email": "shanmugam@gmail.com",
+      "mobile": "7708382819",
+      "accountNumber": "CB005",
+      "address": "Namakkal",
+      "fName": "Shan",
+      "mName": "Daaaaa",
+      "pan": "SHA8743M",
+      "aadhar": "951830472916",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 5
+    }
+  ],
+  "balance": [
+    {
+      "accountNumber": "CB001",
+      "balance": "2001",
+      "id": 1
+    },
+    {
+      "accountNumber": "CB002",
+      "balance": "16000",
+      "id": 2
+    },
+    {
+      "accountNumber": "CB003",
+      "balance": "17500",
+      "id": 3
+    },
+    {
+      "accountNumber": "CB004",
+      "balance": "9999",
+      "id": 4
+    },
+    {
+      "accountNumber": "CB005",
+      "balance": "20000",
+      "id": 5
+    }
+  ],
+  "transactions": [
+    {
+      "name": "Arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "14-3-2023",
+      "currentTime": "0:1:0",
+      "amount": "100",
+      "userAccountNumber": "CB004",
+      "senderName": "Vignesh",
+      "id": 1
+    },
+    {
+      "name": "arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "14-3-2023",
+      "currentTime": "17:11:46",
+      "amount": "300",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 2
+    },
+    {
+      "name": "arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "14-3-2023",
+      "currentTime": "17:12:44",
+      "amount": "500",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 3
+    },
+    {
+      "name": "Arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "14-3-2023",
+      "currentTime": "17:41:15",
+      "amount": "200",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 4
+    },
+    {
+      "name": "praveen",
+      "receiverAccountNumber": "CB001",
+      "currentDate": "14-3-2023",
+      "currentTime": "17:47:47",
+      "amount": "1000",
+      "userAccountNumber": "CB002",
+      "senderName": "Arun",
+      "id": 5
+    },
+    {
+      "name": "vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "14-3-2023",
+      "currentTime": "17:52:13",
+      "amount": "300",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 6
+    },
+    {
+      "name": "arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "14-3-2023",
+      "currentTime": "18:0:26",
+      "amount": "200",
+      "userAccountNumber": "CB005",
+      "senderName": "Shanmugam",
+      "id": 7
+    },
+    {
+      "name": "Praveen",
+      "receiverAccountNumber": "CB001",
+      "currentDate": "14-3-2023",
+      "currentTime": "18:1:29",
+      "amount": "200",
+      "userAccountNumber": "CB005",
+      "senderName": "Shanmugam",
+      "id": 8
+    },
+    {
+      "name": "arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "14-3-2023",
+      "currentTime": "18:2:37",
+      "amount": "200",
+      "userAccountNumber": "CB005",
+      "senderName": "Shanmugam",
+      "id": 9
+    },
+    {
+      "name": "arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "14-3-2023",
+      "currentTime": "21:33:7",
+      "amount": "200",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 10
+    },
+    {
+      "name": "Arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "15-3-2023",
+      "currentTime": "10:4:43",
+      "amount": "500",
+      "userAccountNumber": "CB002",
+      "senderName": "Arun",
+      "id": 11
+    },
+    {
+      "name": "arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "15-3-2023",
+      "currentTime": "10:6:22",
+      "amount": "500",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 12
+    },
+    {
+      "name": "arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "15-3-2023",
+      "currentTime": "10:6:54",
+      "amount": "500",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 13
+    },
+    {
+      "name": "Praveen",
+      "receiverAccountNumber": "CB001",
+      "currentDate": "15-3-2023",
+      "currentTime": "11:30:41",
+      "amount": "500",
+      "userAccountNumber": "CB003",
+      "senderName": "Arjun",
+      "id": 14
+    },
+    {
+      "name": "Praveen",
+      "receiverAccountNumber": "CB001",
+      "currentDate": "15-3-2023",
+      "currentTime": "11:36:45",
+      "amount": "1000",
+      "userAccountNumber": "CB003",
+      "senderName": "Arjun",
+      "id": 15
+    },
+    {
+      "name": "Arun",
+      "receiverAccountNumber": "CB002",
+      "currentDate": "15-3-2023",
+      "currentTime": "22:45:31",
+      "amount": "4000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveenkumar",
+      "id": 16
+    },
+    {
+      "name": "Arjun",
+      "receiverAccountNumber": "CB003",
+      "currentDate": "15-3-2023",
+      "currentTime": "22:48:19",
+      "amount": "1000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveenkumar",
+      "id": 17
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "15-3-2023",
+      "currentTime": "22:51:50",
+      "amount": "1000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveenkumar",
+      "id": 18
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "16-3-2023",
+      "currentTime": "18:28:39",
+      "amount": "1000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 19
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "16-3-2023",
+      "currentTime": "18:29:44",
+      "amount": "9999",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 20
+    },
+    {
+      "name": "Praveen",
+      "receiverAccountNumber": "CB001",
+      "currentDate": "16-3-2023",
+      "currentTime": "18:32:14",
+      "amount": "2000",
+      "userAccountNumber": "CB004",
+      "senderName": "Vignesh",
+      "id": 21
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../assets/jQuery/jQuery.js" rel="javascript"></script>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script
+      src="../assets/bootstrap/js/bootstrap.min.js"
+      rel="javascript"
+    ></script>
+    <link href="../CSS/dashboard.css" rel="stylesheet" />
+    <script src="../Js/dashboard.js"></script>
+    <link rel="stylesheet" href="../CSS/sidebar.css" />
+    <title>Dashboard</title>
+    <link rel="icon" href="../assets//images/logo.ico">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav sidebar-nav">
+            <div class="sidebar-header">
+              <div class="sidebar-brand">
+                <a href="#"> Clayfin Bank </a>
+              </div>
+            </div>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./moneyTransfer.html">Money Transfer</a></li>
+            <li><a href="./transactions.html">Transactions </a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="#" id="logout"> Logout </a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main-content">
+          <div class="container">
+            <div>
+              <h2>Dashboard</h2>
+            </div>
+            <div class="container-1">
+              <div id="balance">
+                <h4>Balance</h4>
+                <div id="balance-container">
+                  <div id="current-balance"></div>
+                  <a type="button" class="btn btn-primary" id="show-balance"
+                    >View balance</a
+                  >
+                </div>
+              </div>
+              <div id="last-credit">
+                <h4>Last credit</h4>
+                <div id="credit"></div>
+              </div>
+              <div id="last-debit">
+                <h4>Last debit</h4>
+                <div id="debit"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
