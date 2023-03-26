@@ -7,6 +7,13 @@ $(document).ready(function () {
     window.location = "index.html";
   });
 
+  $.get("http://localhost:3000/balance", function (data) {
+    allBalance = JSON.stringify(data);
+    //   console.log(allBalance);
+
+    localStorage.setItem("allBalance", allBalance);
+  });
+
   var db = JSON.parse(localStorage.getItem("user"));
   console.log(db.name);
 
@@ -54,69 +61,66 @@ $(document).ready(function () {
     console.log(usersBalance);
     $("#balance").text(usersBalance);
 
-    // $("#current-balance").text("XXXXX").css({ marginLeft: "50px" });
-    // if (
-    //   $("#show-balance").click(function () {
-    //     $("#current-balance").text(usersBalance);
-    //     $("#current-balance").show(1000).css({ marginLeft: "50px" });
-    //     $("#show-balance").hide();
-    //   })
-    // ) {
-    // } else {
-    //   $("#current-balance").hide(1000);
-    // }
-    
-    // $("#current-balance").show().css({ marginLeft: "50px" });
-   
-    var balanceData=localStorage.getItem("balance")
+    var balanceData = localStorage.getItem("balance");
     console.log(balanceData);
-     var z = JSON.parse(balanceData);
-     var cuurentBalance= z.balance;
+    var z = JSON.parse(balanceData);
+    var cuurentBalance = z.balance;
 
+    $("#view-balance").click(function () {
+      $("#view-balance").hide();
+      $("#enter-otp").show();
+      $("#submit").show();
+      $("view-balance").hide();
 
-  $("#view-balance").click(function () {
-    $("#view-balance").hide();
-    $("#enter-otp").show();
-    $("#submit").show();
-    $("view-balance").hide();
+      function generateOTP() {
+        var digits = "0123456789";
 
-    function generateOTP() {
-      var digits = "0123456789";
+        var otpLength = 4;
+        var otp = "";
+        for (let i = 1; i <= otpLength; i++) {
+          var index = Math.floor(Math.random() * digits.length);
 
-      var otpLength = 4;
-      var otp = "";
-      for (let i = 1; i <= otpLength; i++) {
-        var index = Math.floor(Math.random() * digits.length);
-
-        otp = otp + digits[index];
+          otp = otp + digits[index];
+        }
+        //   console.log(otp);
+        localStorage.setItem("otp", otp);
+        alert(`your otp is ${otp}`);
       }
-      //   console.log(otp);
-      localStorage.setItem("otp", otp);
-      alert(`your otp is ${otp}`);
-    }
-    generateOTP();
-    var res = localStorage.getItem("otp");
-    console.log(res);
+      generateOTP();
+      var res = localStorage.getItem("otp");
+      console.log(res);
 
-    $("#submit").click(function () {
-      var enterdOtp = $("#enter-otp").val();
-      console.log(enterdOtp);
-      if (res == enterdOtp) {
-        // console.log("from localstorage",res);
-        // console.log("User enterd",enterdOtp);
-        // alert("Otp verified")
-     
-        $("#current-balance").text(cuurentBalance);
-        $("#enter-otp").hide();
-        $("#submit").hide();
+      $("#submit").click(function () {
+        var enterdOtp = $("#enter-otp").val();
+        console.log(enterdOtp);
+        if (res == enterdOtp) {
+          // console.log("from localstorage",res);
+          // console.log("User enterd",enterdOtp);
+          // alert("Otp verified")
 
-        
-      } else {
-        alert("otp incorrect");
-      }
+          $("#current-balance").text(`₹ ${cuurentBalance}`);
+          $("#enter-otp").hide();
+          $("#submit").hide();
+        } else {
+          // alert("otp incorrect");
+          Toastify({
+            text: "Otp incorrect",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+                 background: "#df5853" ,
+                 color:"white",
+                 padding:"16px 30px",
+                 fontSize:"17px",
+                 borderRadius:"3px"
+            },
+        }).showToast()
+        }
+      });
     });
-  });
-
-
-}
+  }
 });

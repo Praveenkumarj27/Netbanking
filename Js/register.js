@@ -25,7 +25,23 @@ $(document).ready(function () {
       !password ||
       !confirmPassword
     ) {
-      return alert("Please fill all the details");
+      return Toastify({
+        text: "Please fill all the details",
+        duration: 4000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+             background: "#df5853" ,
+             color:"white",
+             padding:"16px 30px",
+             fontSize:"17px",
+             borderRadius:"3px"
+        },
+    }).showToast()
+      
     }
 
     if (password === confirmPassword) {
@@ -53,10 +69,25 @@ $(document).ready(function () {
 
       $.post("http://localhost:3000/balance", {
         accountNumber: accountNumber,
-        balance: "1000",
+        balance: "5000",
       });
     } else {
-      alert("Password didn't match");
+      Toastify({
+        text: "Password didn't match",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+             background: "#df5853" ,
+             color:"white",
+             padding:"16px 30px",
+             fontSize:"17px",
+             borderRadius:"3px"
+        },
+    }).showToast()
     }
   });
 });

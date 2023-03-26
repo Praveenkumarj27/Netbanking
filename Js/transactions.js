@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   $("#logout").click(function () {
     localStorage.removeItem("user");
     localStorage.removeItem("balance");
@@ -9,24 +9,59 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    url: 'http://localhost:3000/transactions',
-    method: 'GET',
-    success: function(response) {
+    url: "http://localhost:3000/transactions",
+    method: "GET",
+    success: function (response) {
+
+
+    // var table =   $("#myDataTable").DataTable({
+    //     data:response,
+    //     columns:[{data:"name"},{data:"receiverAccountNumber"},{data:"currentDate"},{data:"currentTime"},{data:"amount"}]
+    //   })
+
+      // var minDate, maxDate;
+
+      // // Custom filtering function which will search data in column four between two values
+      // $.fn.dataTable.ext.search.push(
+      //     function( settings, data, dataIndex ) {
+      //         var min = minDate.val();
+      //         var max = maxDate.val();
+      //         var date = new Date( data[2] );
+    
+      //         if (
+      //             ( min === null && max === null ) ||
+      //             ( min === null && date <= max ) ||
+      //             ( min <= date   && max === null ) ||
+      //             ( min <= date   && date <= max )
+      //         ) {
+      //             return true;
+      //         }
+      //         return false;
+      //     }
+      // );
+    
+      //     // Create date inputs
+      //     minDate = new DateTime($('#min'), {
+      //         format: 'MMMM DD YYYY'
+      //     });
+      //     maxDate = new DateTime($('#max'), {
+      //         format: 'MMMM DD YYYY'
+      //     });
+    
+      var db = JSON.parse(localStorage.getItem("user"));
+
+   $(".datepicker").datepicker();
       var data = response;
       console.log(data);
       function generateRowHtml(rowData) {
         console.log(rowData);
-        var db = JSON.parse(localStorage.getItem("user"));
-         var sNo = 0;
-             sNo +=1
         
-         console.log(db.accountNumber);
-         console.log(rowData.userAccountNumber);
+
+        console.log(db.accountNumber);
+        console.log(rowData.userAccountNumber);
 
         if (db.accountNumber === rowData.userAccountNumber) {
           let senderStatus="Debited"
-
-          var count = 0;
 
           return '<tr>' +
           '<td>' + rowData.name + '</td>' +
@@ -37,6 +72,7 @@ $(document).ready(function () {
           '<td>' + senderStatus + '</td>' +
           '</tr>';
         }else if (db.accountNumber === rowData.receiverAccountNumber){
+
           let receiverStatus= "Credited";
           let senderName
           return '<tr>' +
@@ -49,35 +85,75 @@ $(document).ready(function () {
           '</tr>';
         }
       }
+
       var tableBody = $('table tbody');
       data.forEach(function(rowData) {
         var rowHtml = generateRowHtml(rowData);
         tableBody.append(rowHtml);
       });
+      
+      $("#filter").click(function(){
+       
+        var minDate=$("#startdate").val()
+        console.log(typeof(minDate));
+        var maxDate=$("#enddate").val()
+        console.log(minDate);
+        $.ajax({
+            url: "http://localhost:3000/transactions",
+            method: "GET",
+            success: function (response) {
+             console.log(response)
 
-      $('#search-input').on('keyup', function() {
-        var searchTerm = $(this).val().toLowerCase();
-        var filteredData = data.filter(function(rowData) {
-          var searchMatches = false;
-          Object.keys(rowData).forEach(function(key) {
-            if (rowData[key].toString().toLowerCase().indexOf(searchTerm) > -1) {
-              searchMatches = true;
-            }
+              var res=response.filter((e)=>(e.currentDate >=minDate && e.currentDate<=maxDate))
+              console.log(res);
+
+              function filterdData(e) {
+                console.log(e);
+                if (db.accountNumber === e.userAccountNumber) {
+                  let senderStatus="Debited"
+        
+                  return '<tr>' +
+                  '<td>' + e.name + '</td>' +
+                  '<td>' + e.receiverAccountNumber + '</td>' +
+                  '<td>' + e.currentDate + '</td>' +
+                  '<td>' + e.currentTime + '</td>' +
+                  '<td>' + e.amount + '</td>' +
+                  '<td>' + senderStatus + '</td>' +
+                  '</tr>';
+                }else if (db.accountNumber === e.receiverAccountNumber){
+        
+                  let receiverStatus= "Credited";
+                  let senderName
+                  return '<tr>' +
+                  '<td>' + e.senderName + '</td>' +
+                  '<td>' + e.userAccountNumber + '</td>' +
+                  '<td>' + e.currentDate + '</td>' +
+                  '<td>' + e.currentTime + '</td>' +
+                  '<td>' + e.amount + '</td>' +
+                  '<td>' + receiverStatus + '</td>' +
+                  '</tr>';
+                }
+              }
+               
+              var filteredTableBody
+              res.forEach(function(e) {
+                var newData = filterdData(e);
+                filteredTableBody += newData
+                $('table tbody').html(filteredTableBody);
+              });
+            },
           });
-          return searchMatches;
-        });
-        tableBody.empty();
-        filteredData.forEach(function(rowData) {
-          var rowHtml = generateRowHtml(rowData);
-          tableBody.append(rowHtml);
+          
+    })
+      $("#search-input").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myDataTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
       });
+    },
+  });
+ 
 
-      // let table = new DataTable('#myDataTable')
-
-    }
-  })
-
+ 
 });
-
-

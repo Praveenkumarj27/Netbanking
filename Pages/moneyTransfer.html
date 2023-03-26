@@ -10,10 +10,14 @@
       src="../assets/bootstrap/js/bootstrap.min.js"
       rel="javascript"
     ></script>
-    <script src="../Js/money.js"></script>
+    <script src="../Js/moneyTransfer.js"></script>
     <link href="../CSS/moneyTransfer.css" rel="stylesheet" />
     <link href="../CSS/sidebar.css" rel="stylesheet" />
     <link rel="icon" href="../assets//images/logo.ico">
+    
+    <!-- toastify -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <title>Money Transfer</title>
   </head>
   <body>
@@ -24,7 +28,7 @@
             <div class="sidebar-header">
               <div class="sidebar-brand">
                 <a href="#"> Clayfin Bank </a>
-              </div>
+            </div>
             </div>
             <li><a href="./dashboard.html">Dashboard</a></li>
             <li><a href="./moneyTransfer.html">Money Transfer</a></li>
@@ -47,7 +51,6 @@
                     class="form-control"
                     placeholder="Enter Name"
                   />
-
                   <input
                     type="password"
                     id="acct-num"
@@ -67,7 +70,17 @@
                     id="amount"
                     class="form-control mt-3"
                     placeholder="Enter Amount"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                   />
+
+                  <!-- <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text mt-3" id="basic-addon1">₹</span>
+                    </div>
+                    <input type="text" class="form-control mt-3" placeholder="Enter Amount"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" >
+                  </div> -->
+
                   <div class="col-lg mt-3">
                     <input
                       type="button"

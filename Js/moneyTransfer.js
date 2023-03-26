@@ -7,6 +7,7 @@ $(document).ready(function () {
     window.location = "index.html";
   });
 
+
   var allBalance = JSON.parse(localStorage.getItem("allBalance"));
 
   var allUsers = JSON.parse(localStorage.getItem("allUsers"));
@@ -14,7 +15,7 @@ $(document).ready(function () {
   var balanceData = JSON.parse(localStorage.getItem("balance"));
 
   var db = JSON.parse(localStorage.getItem("user"));
-  console.log("allbalance",allBalance);
+  console.log("allbalance", allBalance);
   console.log(allBalance);
   console.log(allUsers);
   console.log(balanceData);
@@ -23,10 +24,13 @@ $(document).ready(function () {
   var userAccountNumber = balanceData.accountNumber;
 
   var date = new Date();
+  console.log(date);
+  
   var day = date.getDate();
-  var month = date.getMonth() + 1;
+  // var month = date.getMonth() + 1;
+  var month=("0" + (date.getMonth() + 1)).slice(-2)
   var year = date.getFullYear();
-  var currentDate = `${day}-${month}-${year}`;
+   var currentDate = `${month}/${day}/${year}`;
   console.log(currentDate);
 
   var hours = date.getHours();
@@ -39,7 +43,6 @@ $(document).ready(function () {
   console.log(balanceData);
 
   $("#transfer-btn").click(function () {
-
     var name = $("#name").val();
     var receiverAccountNumber = $("#acct-num").val();
     var reEnterAccountnumber = $("#re-acct-num").val();
@@ -51,101 +54,209 @@ $(document).ready(function () {
     console.log(amount);
 
     if (!name || !receiverAccountNumber || !reEnterAccountnumber || !amount) {
-      alert("Fill all the details");
+     // alert("Fill all the details");
+      Toastify({
+        text: "Fill all the details",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+             background: "#df5853" ,
+             color:"white",
+             padding:"16px 30px",
+             fontSize:"17px",
+             borderRadius:"3px"
+        },
+    }).showToast()
     } else if (receiverAccountNumber === reEnterAccountnumber) {
-   
-      var findUser = allBalance.find(
-        (e) => e.accountNumber === receiverAccountNumber
-      );
-      console.log(findUser);
+      $.get("http://localhost:3000/balance", function (data) {
+        var fullBalance1 = JSON.stringify(data);
+        //   console.log(allBalance);
 
-      if (findUser) {
-        if (amount > 0) {
-          if (parseInt(balanceData.balance) > parseInt(amount)) {
-            if (amount < 10000 && amount > 0) {
-              var currentBalance = JSON.parse(findUser.balance);
-              console.log("previous balance", findUser.balance);
-              var updateBalance = currentBalance + parseInt(amount);
-              console.log("update balance", updateBalance);
-              console.log("your previous balance is", balanceData.balance);
-              var selfUserAmount = balanceData.balance - amount;
-              console.log("your current balance is", selfUserAmount);
-              $.post("http://localhost:3000/transactions", {
-                name,
-                receiverAccountNumber,
-                currentDate,
-                currentTime,
-                amount,
-                userAccountNumber,
-                senderName: db.name,
-              });
-              if (db.accountNumber === userAccountNumber) {
-                $.ajax({
-                  type: "PUT",
-                  url: `http://localhost:3000/balance/${db.id}`,
-                  data: {
-                    accountNumber: db.accountNumber,
-                    balance: selfUserAmount.toString(),
-                  },
-                  success: function (response) {
-                    balanceData.balance = selfUserAmount.toString();
-                    localStorage.setItem(
-                      "balance",
-                      JSON.stringify(balanceData)
-                    );
+        var fullBalance = JSON.parse(fullBalance1);
 
-                    console.log("User updated successfully");
-                  },
-                  error: function (xhr, status, error) {
-                    console.error("Error updating user: " + error);
-                  },
+        var findUser = fullBalance.find(
+          (e) => e.accountNumber === receiverAccountNumber
+        );
+        console.log(findUser);
+
+        if (findUser) {
+          if (amount > 0) {
+            if (parseInt(balanceData.balance) > parseInt(amount)) {
+              if (amount < 10000 && amount > 0) {
+                var currentBalance = JSON.parse(findUser.balance);
+                console.log("previous balance", findUser.balance);
+                var updateBalance = currentBalance + parseInt(amount);
+                console.log("update balance", updateBalance);
+                console.log("your previous balance is", balanceData.balance);
+                var selfUserAmount = balanceData.balance - amount;
+                console.log("your current balance is", selfUserAmount);
+
+                $.post("http://localhost:3000/transactions", {
+                  name,
+                  receiverAccountNumber,
+                  currentDate,
+                  currentTime,
+                  amount,
+                  userAccountNumber,
+                  senderName: db.name,
                 });
-                var finduser = allBalance.find(
-                  (e) => e.accountNumber === receiverAccountNumber
-                );
-                console.log(findUser.id);
-  
-                $.ajax({
-                  type: "PUT",
-                  url: `http://localhost:3000/balance/${findUser.id}`,
-                  data: {
-                    accountNumber: receiverAccountNumber,
-                    balance: updateBalance.toString(),
+                if (db.accountNumber === userAccountNumber) {
+                  $.ajax({
+                    type: "PUT",
+                    url: `http://localhost:3000/balance/${db.id}`,
+                    data: {
+                      accountNumber: db.accountNumber,
+                      balance: selfUserAmount.toString(),
+                    },
+                    success: function (response) {
+                      balanceData.balance = selfUserAmount.toString();
+                      localStorage.setItem(
+                        "balance",
+                        JSON.stringify(balanceData)
+                      );
+
+                      console.log("User updated successfully");
+                    },
+                    error: function (xhr, status, error) {
+                      console.error("Error updating user: " + error);
+                    },
+                  });
+                  var finduser = allBalance.find(
+                    (e) => e.accountNumber === receiverAccountNumber
+                  );
+                  console.log(findUser.id);
+
+                  $.ajax({
+                    type: "PUT",
+                    url: `http://localhost:3000/balance/${findUser.id}`,
+                    data: {
+                      accountNumber: receiverAccountNumber,
+                      balance: updateBalance.toString(),
+                    },
+                    success: function (response) {
+                      console.log("User updated successfully");
+                    },
+                    error: function (xhr, status, error) {
+                      console.error("Error updating user: " + error);
+                    },
+                  });
+                }
+                // alert("Transferred sucessfully");
+                Toastify({
+                  text: "Transferred sucessfully",
+                  duration: 3000,
+                  newWindow: true,
+                  close: true,
+                  gravity: "top", 
+                  position: "right", 
+                  stopOnFocus: true, 
+                  style: {
+                       background: "#29aa40",
+                       color:"white",
+                       padding:"16px 30px",
+                       fontSize:"17px",
+                       borderRadius:"3px"
                   },
-                  success: function (response) {
-                    $.get("http://localhost:3000/balance", function (data) {
-                      allBalance = JSON.stringify(data);
-                      //   console.log(allBalance);
-  
-                      localStorage.setItem("allBalance", allBalance);
-                    });
-                    console.log("User updated successfully");
+              }).showToast()
+                
+              } else {
+                Toastify({
+                  text: "Amount should be lesser than 10000",
+                  duration: 3000,
+                  newWindow: true,
+                  close: true,
+                  gravity: "top", 
+                  position: "right", 
+                  stopOnFocus: true, 
+                  style: {
+                       background: "#df5853" ,
+                       color:"white",
+                       padding:"16px 30px",
+                       fontSize:"17px",
+                       borderRadius:"3px"
                   },
-                  error: function (xhr, status, error) {
-                    console.error("Error updating user: " + error);
-                  },
-                });
+              }).showToast()
               }
-              
-
-              // db.balance=selfUserAmount.toString()
-              // localStorage.setItem("balance",JSON.stringify(balanceData))
-
-              alert("Transferred sucessfully");
             } else {
-              alert("Amount should be lesser than 10000 ");
+              // alert("your balance is low");
+              Toastify({
+                text: "your balance is low",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", 
+                position: "right", 
+                stopOnFocus: true, 
+                style: {
+                     background: "#df5853" ,
+                     color:"white",
+                     padding:"16px 30px",
+                     fontSize:"17px",
+                     borderRadius:"3px"
+                },
+            }).showToast()
             }
           } else {
-            alert("your balance is low");
+           // alert("Amount should be greater than 0 ");
+            Toastify({
+              text: "Amount should be greater than 0 ",
+              duration: 3000,
+              newWindow: true,
+              close: true,
+              gravity: "top", 
+              position: "right", 
+              stopOnFocus: true, 
+              style: {
+                   background: "#df5853" ,
+                   color:"white",
+                   padding:"16px 30px",
+                   fontSize:"17px",
+                   borderRadius:"3px"
+              },
+          }).showToast()
           }
         } else {
-          alert("Amount should be greater than 0 ");
+          // alert("Account number not valid");
+          Toastify({
+            text: "Account number not valid",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+                 background: "#df5853" ,
+                 color:"white",
+                 padding:"16px 30px",
+                 fontSize:"17px",
+                 borderRadius:"3px"
+            },
+        }).showToast()
         }
-      } else {
-        alert("Account number not valid");
-      }
+      });
     } else {
-      alert("Invalid credentials");
+      // alert("Invalid credentials");
+      Toastify({
+        text: "Invalid credentials",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+             background: "#df5853" ,
+             color:"white",
+             padding:"16px 30px",
+             fontSize:"17px",
+             borderRadius:"3px"
+        },
+    }).showToast()
     }
   });
 });

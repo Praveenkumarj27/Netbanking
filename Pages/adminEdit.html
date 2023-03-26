@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +10,14 @@
       src="../assets/bootstrap/js/bootstrap.min.js"
       rel="javascript"
     ></script>
+    <script src="../Js/adminEdit.js"></script>
+    <script src="../Js/adminProfile.js"></script>
     <link href="../CSS/sidebar.css" rel="stylesheet" />
-    <script src="../Js/editProfile.js"></script>
     <link rel="icon" href="../assets//images/logo.ico">
-
-    <!-- toastify -->
+<!-- toastify -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <title>Edit Profile</title>
 </head>
 <body>
@@ -28,10 +29,9 @@
                 <div class="sidebar-header">  
                 <div class="sidebar-brand">  
                   <a href="#"> Clayfin Bank </a> </div> </div>  
-                <li><a href="./dashboard.html">Dashboard</a></li>  
-                <li><a href="./moneyTransfer.html">Money Transfer</a></li>  
-                <li><a href="./transactions.html">Transactions </a> </li>  
-                <li><a href="./profile.html">Profile</a></li>  
+               
+                <li><a href="./adminTransactions.html">Transactions </a> </li>  
+                <li><a href="./adminProfile.html">Profile</a></li>  
                 <li><a href="#" id="logout"> Logout </a> </li>  
                </ul>  
           </div>
@@ -45,36 +45,36 @@
                   </div>
                   <div class="col-lg-6">
                     <label class="form-label">Name:</label>
-                    <input type="text" id="name" class="form-control" placeholder="name" />
+                    <input type="text" id="admin-name" class="form-control" placeholder="name" />
                   </div>
                   <div class="col-lg-6">
                     <label class="form-label">Email:</label>
-                    <input type="text" id="email" class="form-control" placeholder="email" />
+                    <input type="text" id="admin-email" class="form-control" placeholder="email" />
                   </div>
                   <div class="col-lg-6 mt-3">
                     <label class="form-label">Mobile:</label>
-                    <input type="text" id="mobile" class="form-control" placeholder="mobile" disabled />
+                    <input type="text" id="admin-mobile" class="form-control" placeholder="mobile" />
                   </div>
                   <!-- <div class="col-lg-6 mt-3">
                     <label class="form-label">Account Number:</label>
-                    <input type="text" id="account-number" class="form-control" placeholder="account number" disabled/>
+                    <input type="text" id="account-number" class="form-control" placeholder="account number"/>
                   </div> -->
                   
                   <div class="col-lg-6 mt-3">
                     <label class="form-label">Father's Name:</label>
-                    <input type="text" id="fathers-name" class="form-control" placeholder="Father's name" />
+                    <input type="text" id="admin-fathers-name" class="form-control" placeholder="Father's name" />
                   </div>
                   <div class="col-lg-6 mt-3">
                     <label class="form-label">PAN Number:</label>
-                    <input type="text" id="pan" class="form-control" placeholder="PAN" disabled/>
+                    <input type="text" id="admin-pan" class="form-control" placeholder="PAN" />
                   </div>
                   <div class="col-lg-6 mt-3">
                     <label class="form-label">Aadhaar Number:</label>
-                    <input type="text"  id="aadhar" class="form-control" placeholder="Aadhaar" disabled/>
+                    <input type="text"  id="admin-aadhar" class="form-control" placeholder="Aadhaar" />
                   </div>
                   <div class="col-lg-6 mt-3">
                     <label class="form-label">Address:</label>
-                    <input type="text" id="address" class="form-control" placeholder="address" />
+                    <input type="text" id="admin-address" class="form-control" placeholder="address" />
                   </div>
                   <div class="col-lg-8 mt-3">
                     <input type="button" id="submit-btn" class="btn btn-primary" value="Submit" />
@@ -87,4 +87,4 @@
       </div>
 
 </body>
-</html> 
+</html>

@@ -13,6 +13,9 @@
     <link href="../CSS/dashboard.css" rel="stylesheet" />
     <script src="../Js/dashboard.js"></script>
     <link rel="stylesheet" href="../CSS/sidebar.css" />
+    <!-- toastify -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <title>Dashboard</title>
     <link rel="icon" href="../assets//images/logo.ico">
   </head>
@@ -43,6 +46,17 @@
                 <h4>Balance</h4>
                 <div id="balance-container">
                   <div id="current-balance"></div>
+
+                  <input
+                        type="number"
+                        class="form-control"
+                        placeholder="enter otp"
+                        id="enter-otp"
+                      />
+                      <button class="btn btn-primary mt-3" id="submit">
+                        Submit
+                      </button>
+                      
                   <a type="button" class="btn btn-primary" id="show-balance"
                     >View balance</a
                   >
