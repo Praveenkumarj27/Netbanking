@@ -145,23 +145,23 @@ $(document).ready(function () {
                     },
                   });
                 }
-                // alert("Transferred sucessfully");
-                Toastify({
-                  text: "Transferred sucessfully",
-                  duration: 3000,
-                  newWindow: true,
-                  close: true,
-                  gravity: "top", 
-                  position: "right", 
-                  stopOnFocus: true, 
-                  style: {
-                       background: "#29aa40",
-                       color:"white",
-                       padding:"16px 30px",
-                       fontSize:"17px",
-                       borderRadius:"3px"
-                  },
-              }).showToast()
+                 alert("Transferred sucessfully");
+              //   Toastify({
+              //     text: "Transferred sucessfully",
+              //     duration: 3000,
+              //     newWindow: true,
+              //     close: true,
+              //     gravity: "top", 
+              //     position: "right", 
+              //     stopOnFocus: true, 
+              //     style: {
+              //          background: "#29aa40",
+              //          color:"white",
+              //          padding:"16px 30px",
+              //          fontSize:"17px",
+              //          borderRadius:"3px"
+              //     },
+              // }).showToast()
                 
               } else {
                 Toastify({

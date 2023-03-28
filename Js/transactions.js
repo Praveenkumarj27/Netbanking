@@ -105,7 +105,7 @@ $(document).ready(function () {
              console.log(response)
 
               var res=response.filter((e)=>(e.currentDate >=minDate && e.currentDate<=maxDate))
-              console.log(res);
+              console.log(res.length);
 
               function filterdData(e) {
                 console.log(e);
@@ -115,7 +115,7 @@ $(document).ready(function () {
                   return '<tr>' +
                   '<td>' + e.name + '</td>' +
                   '<td>' + e.receiverAccountNumber + '</td>' +
-                  '<td>' + e.currentDate + '</td>' +
+                  '<td class="date-column">' + e.currentDate + '</td>' +
                   '<td>' + e.currentTime + '</td>' +
                   '<td>' + e.amount + '</td>' +
                   '<td>' + senderStatus + '</td>' +
@@ -127,7 +127,7 @@ $(document).ready(function () {
                   return '<tr>' +
                   '<td>' + e.senderName + '</td>' +
                   '<td>' + e.userAccountNumber + '</td>' +
-                  '<td>' + e.currentDate + '</td>' +
+                  '<td class="date-column">' + e.currentDate + '</td>' +
                   '<td>' + e.currentTime + '</td>' +
                   '<td>' + e.amount + '</td>' +
                   '<td>' + receiverStatus + '</td>' +
@@ -136,21 +136,66 @@ $(document).ready(function () {
               }
                
               var filteredTableBody
-              res.forEach(function(e) {
-                var newData = filterdData(e);
-                filteredTableBody += newData
-                $('table tbody').html(filteredTableBody);
-              });
+              if(res.length<=0){
+                $('table tbody').html("<h2>No Transactions</h2>").css("textAlign","center");
+              }else{
+                res.forEach(function(e) {
+                  var newData = filterdData(e);
+                  filteredTableBody += newData
+                  $('table tbody').html(filteredTableBody);
+                });
+              }
+             
             },
           });
           
     })
-      $("#search-input").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myDataTable tr").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
+      // $("#search-input").on("keyup", function () {
+      //   var value = $(this).val().toLowerCase();
+      //   $("#myDataTable tr").filter(function () {
+      //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      //   });
+      // });
+
+      // Search on name column only
+      $('#search-input').keyup(function(){
+        // Search Text
+        var search = $(this).val();
+    
+        // Hide all table tbody rows
+        $('table tbody tr').hide();
+    
+        // Count total search result
+        var len = $('table tbody tr:not(.notfound) td:contains("'+search+'")').length;
+    
+        if(len > 0){
+          // Searching text in columns and show match row
+          $('table tbody tr:not(.notfound) td:contains("'+search+'")').each(function(){
+            $(this).closest('tr').show();
+          });
+        }else{
+          $('.notfound').show();
+        }
       });
+
+    
+//       var today = new Date();
+// var tenDaysAgo = new Date(today.getTime() - 10 * 24 * 60 * 60 * 1000);
+
+//       $("#last-btn").click(function(){
+//         $('table tr').each(function() {
+//           var dateValue = $(this).find('.date-column').text(); // assuming your date column has a class of 'date-column'
+//           var date = new Date(dateValue);
+       
+//           if(date < tenDaysAgo) {
+//               $(this).hide();
+//           }
+//        });
+//       })
+
+
+
+
     },
   });
  

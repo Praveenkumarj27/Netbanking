@@ -43,7 +43,7 @@
       "id": 3
     },
     {
-      "name": "Vignesh",
+      "name": "Vigneshwaran",
       "email": "vignesh@gmail.com",
       "mobile": "7698938615",
       "accountNumber": "CB004",
@@ -111,12 +111,27 @@
       "password": "1234",
       "confirmPassword": "1234",
       "id": 8
+    },
+    {
+      "name": "Gokulakrishnan",
+      "email": "gokul@gmail.com",
+      "mobile": "9159550219",
+      "accountNumber": "60010019935",
+      "permanentAddress": "2/84,Yadavar Street,Pudupattu",
+      "presentAddress": "2/84,Yadavar Street,Pudupattu",
+      "fName": "Kumaravel",
+      "mName": "Selvi",
+      "pan": "JYFPK3104R",
+      "aadhar": "786843249854",
+      "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+      "confirmPassword": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+      "id": 9
     }
   ],
   "balance": [
     {
       "accountNumber": "CB001",
-      "balance": "10000",
+      "balance": "1",
       "id": 1
     },
     {
@@ -126,17 +141,17 @@
     },
     {
       "accountNumber": "CB003",
-      "balance": "10000",
+      "balance": "9000",
       "id": 3
     },
     {
       "accountNumber": "CB004",
-      "balance": "8000",
+      "balance": "21000",
       "id": 4
     },
     {
       "accountNumber": "CB005",
-      "balance": "11800",
+      "balance": "12800",
       "id": 5
     },
     {
@@ -146,13 +161,18 @@
     },
     {
       "accountNumber": "CB006",
-      "balance": "13000",
+      "balance": "15000",
       "id": 7
     },
     {
       "accountNumber": "CB007",
-      "balance": "5000",
+      "balance": "10000",
       "id": 8
+    },
+    {
+      "accountNumber": "60010019935",
+      "balance": "5000",
+      "id": 9
     }
   ],
   "transactions": [
@@ -775,6 +795,96 @@
       "userAccountNumber": "CB001",
       "senderName": "Praveen",
       "id": 62
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "03/26/2023",
+      "currentTime": "20:15:24",
+      "amount": "2000",
+      "userAccountNumber": "CB007",
+      "senderName": "Giri",
+      "id": 63
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "03/26/2023",
+      "currentTime": "20:17:3",
+      "amount": "1000",
+      "userAccountNumber": "CB007",
+      "senderName": "Giri",
+      "id": 64
+    },
+    {
+      "name": "Shanmugam",
+      "receiverAccountNumber": "CB005",
+      "currentDate": "03/27/2023",
+      "currentTime": "9:52:9",
+      "amount": "1000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveenkumar",
+      "id": 65
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "03/27/2023",
+      "currentTime": "10:2:10",
+      "amount": "2000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 66
+    },
+    {
+      "name": "Giri",
+      "receiverAccountNumber": "CB007",
+      "currentDate": "03/27/2023",
+      "currentTime": "14:32:57",
+      "amount": "1000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 67
+    },
+    {
+      "name": "Ashwin",
+      "receiverAccountNumber": "CB006",
+      "currentDate": "03/27/2023",
+      "currentTime": "15:29:48",
+      "amount": "2000",
+      "userAccountNumber": "CB007",
+      "senderName": "Giri",
+      "id": 68
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "03/27/2023",
+      "currentTime": "17:21:7",
+      "amount": "9999",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveen",
+      "id": 69
+    },
+    {
+      "name": "Vignesh",
+      "receiverAccountNumber": "CB004",
+      "currentDate": "03/27/2023",
+      "currentTime": "17:26:6",
+      "amount": "8000",
+      "userAccountNumber": "CB001",
+      "senderName": "Praveenkumar",
+      "id": 70
+    },
+    {
+      "name": "Gokul",
+      "receiverAccountNumber": "60010042620",
+      "currentDate": "03/28/2023",
+      "currentTime": "18:33:0",
+      "amount": "1000",
+      "userAccountNumber": "CB003",
+      "senderName": "Arjun",
+      "id": 71
     }
   ]
 }

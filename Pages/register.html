@@ -12,6 +12,8 @@
     ></script>
     <script src="../Js/register.js"></script>
     <link rel="icon" href="../assets//images/logo.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
     <!-- toastify -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -41,16 +43,16 @@
         </div>
         <div class="col-lg-6">
           <label class="form-label">Email:</label>
-          <input type="text" id="email" class="form-control" placeholder="email" />
+          <input type="email" id="email" class="form-control" placeholder="email" />
         </div>
         <div class="col-lg-6 mt-3">
           <label class="form-label">Mobile:</label>
           <input type="text" id="mobile" class="form-control" placeholder="mobile" />
         </div>
-        <div class="col-lg-6 mt-3">
+        <!-- <div class="col-lg-6 mt-3">
           <label class="form-label">Account Number:</label>
           <input type="text" id="account-number" class="form-control" placeholder="account number" />
-        </div>
+        </div> -->
         
         <div class="col-lg-6 mt-3">
           <label class="form-label">Father's Name:</label>
@@ -62,16 +64,31 @@
         </div>
         <div class="col-lg-6 mt-3">
           <label class="form-label">PAN Number:</label>
-          <input type="text" id="pan" class="form-control" placeholder="PAN" />
+        
+          <input type="text" id="pan" name="pan"  class="form-control" placeholder="PAN" required>
+          <!-- <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <input type="submit">
+          </form> -->
         </div>
         <div class="col-lg-6 mt-3">
           <label class="form-label">Aadhaar Number:</label>
-          <input type="text"  id="aadhar" class="form-control" placeholder="Aadhaar" />
+          <input type="number"  id="aadhar" class="form-control" placeholder="Aadhaar" />
         </div>
         <div class="col-lg-6 mt-3">
-          <label class="form-label">Address:</label>
-          <input type="text" id="address" class="form-control" placeholder="address" />
+          <label for="permanent-address" class="form-label">Permanent Address:</label>
+          <input type="text" id="permanent-address" name="permanent-address" class="form-control" placeholder="permanent-address" />
         </div>
+
+        <div class="col-lg-6 mt-3">
+          <label for="present-address"  class="form-label">Present Address:</label>
+          <input type="text" id="present-address" name="present-address" class="form-control" placeholder="present-address" />
+        </div>
+        <div class="col-lg-6 mt-3">
+        <label for="copy-address">
+          <input type="radio" id="copy-address" name="address" value="permanent"> Copy Permanent Address to Present Address
+        </label>
+      </div>
 
         <div class="col-lg-6 mt-3">
           <label class="form-label">Password:</label>

@@ -3,6 +3,8 @@ $(document).ready(function () {
     var email = $("#login-email").val();
     var password = $("#login-password").val();
 
+    var hashedPassword = CryptoJS.SHA256(password).toString();
+
     $.get("http://localhost:3000/users", function (data) {
       allUsers = JSON.stringify(data);
       //   console.log(allUsers);
@@ -21,7 +23,7 @@ $(document).ready(function () {
       type: "GET",
       success: function (data) {
         const findUser = data.find(
-          (e) => email === e.email && password === e.password
+          (e) => email === e.email && hashedPassword === e.password
         );
         if (findUser) {
           getData(findUser);
