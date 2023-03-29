@@ -159,13 +159,12 @@ $(document).ready(function () {
 
       // Search on name column only
       $('#search-input').keyup(function(){
-        // Search Text
+       
         var search = $(this).val();
     
-        // Hide all table tbody rows
+       
         $('table tbody tr').hide();
     
-        // Count total search result
         var len = $('table tbody tr:not(.notfound) td:contains("'+search+'")').length;
     
         if(len > 0){
@@ -180,7 +179,7 @@ $(document).ready(function () {
 
     
 //       var today = new Date();
-// var tenDaysAgo = new Date(today.getTime() - 10 * 24 * 60 * 60 * 1000);
+//       var tenDaysAgo = new Date(today.getTime() - 10 * 24 * 60 * 60 * 1000);
 
 //       $("#last-btn").click(function(){
 //         $('table tr').each(function() {
