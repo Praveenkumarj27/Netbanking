@@ -4,6 +4,8 @@ $(document).ready(function () {
     localStorage.removeItem("balance");
     localStorage.removeItem("allUsers");
     localStorage.removeItem("allBalance");
+    localStorage.removeItem("transactionsData")
+    localStorage.removeItem("adminTransactionsData")
     window.location = "index.html";
   });
 
@@ -40,16 +42,21 @@ $(document).ready(function () {
     $("#pan-number").text(userData.pan);
     $("#email").text(userData.email);
     $("#mobile").text(userData.mobile);
+    $("#aadhar-img").attr("href",userData.aadharImage)
+    $("#pan-img").attr("href",userData.panImage)
   }
 
   $("#enter-otp").hide();
   $("#submit").hide();
 
   $.get("http://localhost:3000/balance", function (data) {
-    var findBalance = data.find((e) => db.id === e.id);
+    console.log(data);
+    var findBalance = data.find((e) => db.accountNumber === e.accountNumber && db.name===e.name);
+   
     if (findBalance) {
       getBalanceData(findBalance);
-    } else {
+    }
+     else {
       alert("error");
     }
   });
@@ -59,6 +66,7 @@ $(document).ready(function () {
     var usersBalance = balanceData.balance;
     window.localStorage.setItem("balance", JSON.stringify(balanceData));
     console.log(usersBalance);
+
     $("#balance").text(usersBalance);
 
     var balanceData = localStorage.getItem("balance");

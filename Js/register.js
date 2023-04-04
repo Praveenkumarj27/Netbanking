@@ -7,11 +7,13 @@ $(document).ready(function () {
     }
   });
 
+
+
   var aadharImageLink=""
   var PanImageLink=""
 
   $.uploader.init({
-    apiKey: "public_12a1y5nEsTHzLujSx43Yy1VCAwXG" // Your real API key.
+    apiKey: "public_kW15bBWA6e6qofDQBXEWp1sjfVoP" // Your real API key.
 });
 $(() => {
     $(".aadhar-upload-btn").uploader({
@@ -20,12 +22,11 @@ $(() => {
             if (files.length === 0) {
                 alert('No files selected.')
             } else {
-                $("#aadhar-append").append(`<p>${files.map(f => f.originalFile.file.name)}</p>`)
+                // $("#aadhar-append").append(`<p>${files.map(f => f.originalFile.file.name)}</p>`)
+                $(".aadhar-upload-btn").val(`${files.map(f => f.originalFile.file.name)}`)
                 console.log(files)
-                //  alert(files.map(f => f.fileUrl).join("\n"));
-                aadharImageLink = files.map(f => f.fileUrl)
-                console.log(typeof (aadharImageLink))
-                //localStorage.setItem("url", [aadharLink])
+                res = files.map(f => f.fileUrl)
+                aadharImageLink=res[0]
             }
         }
     });
@@ -33,7 +34,7 @@ $(() => {
 
 
 $.uploader.init({
-  apiKey: "public_12a1y5nEsTHzLujSx43Yy1VCAwXG" // Your real API key.
+  apiKey: "public_kW15bBWA6e6qofDQBXEWp1sjfVoP" // Your real API key.
 });
 $(() => {
   $(".pan-upload-btn").uploader({
@@ -42,12 +43,12 @@ $(() => {
           if (files.length === 0) {
               alert('No files selected.')
           } else {
-              $("#pan-append").append(`<p>${files.map(f => f.originalFile.file.name)}</p>`)
+              //$("#pan-append").append(`<p>${files.map(f => f.originalFile.file.name)}</p>`)
+              $(".pan-upload-btn").val(`${files.map(f => f.originalFile.file.name)}`)
               console.log(files)
-              //  alert(files.map(f => f.fileUrl).join("\n"));
-               PanImageLink = files.map(f => f.fileUrl)
+               res = files.map(f => f.fileUrl)
+               PanImageLink=res[0]
               console.log(typeof (PanImageLink))
-              //localStorage.setItem("url", [aadharLink])
           }
       }
   });
@@ -229,16 +230,17 @@ var accountNumber=""
           mName,
           pan,
           aadhar,
-          aadharImageLink,
-          PanImageLink,
-         password: hashedPassword,
-         confirmPassword: hashedConfirmPassword,
+          aadharImage:aadharImageLink,
+          panImage:PanImageLink,
+          password: hashedPassword,
+          confirmPassword: hashedConfirmPassword,
         },
         window.location = "login.html"
       );
 
       $.post("http://localhost:3000/balance", {
         accountNumber: accountNumber,
+        name,
         balance: "5000",
       });
     } else {

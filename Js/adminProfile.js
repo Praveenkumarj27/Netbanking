@@ -4,6 +4,9 @@ $(document).ready(function () {
     localStorage.removeItem("balance");
     localStorage.removeItem("allUsers");
     localStorage.removeItem("allBalance");
+    localStorage.removeItem("transactionsData")
+    localStorage.removeItem("adminTransactionsData")
+    localStorage.removeItem("editProfile")
     window.location = "index.html";
   });
 
@@ -42,12 +45,13 @@ $(document).ready(function () {
         data.find((ele) => {
           if (this.id == ele.id) {
             localStorage.setItem("editProfile", JSON.stringify(ele));
-            window.location = "adminEdit.html";
-
-            // alert(ele.name);
+            window.location = "adminView.html";
+           // alert(ele.name);
           }
         });
       });
+
+
       // $(".delete").click(function () {
       //   console.log(this.id);
 

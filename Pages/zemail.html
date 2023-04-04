@@ -1,0 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/jQuery/jQuery.js" rel="javascript"></script>
+    <title>Document</title>
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("YOUR_USER_ID");
+   })();
+</script>
+</head>
+<body>
+    <form id="email-form">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Subject:</label>
+        <input type="text" name="subject" required>
+        
+        <label>Message:</label>
+        <textarea name="message" required></textarea>
+        
+        <button type="submit">Send</button>
+      </form>
+    <script>
+
+
+
+  $(document).ready(function() {
+  $('#email-form').submit(function(event) {
+    event.preventDefault(); // prevent the form from submitting normally
+    
+    var templateParams = {
+      name: $('#email-form [name="name"]').val(),
+      email: $('#email-form [name="email"]').val(),
+      subject: $('#email-form [name="subject"]').val(),
+      message: $('#email-form [name="message"]').val()
+    };
+    
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+      .then(function(response) {
+        alert('Email sent successfully!');
+      }, function(error) {
+        alert('Error sending email: ' + error);
+      });
+  });
+});
+
+    </script>
+</body>
+</html> -->

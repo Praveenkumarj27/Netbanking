@@ -1,7 +1,16 @@
 $(document).ready(function () {
+
+
+    $("#show-password").click(function(){
+      $("#login-password").attr("type","text"); 
+    })
+
   $("#login-btn").click(function () {
+    
     var email = $("#login-email").val();
     var password = $("#login-password").val();
+
+
 
     var hashedPassword = CryptoJS.SHA256(password).toString();
 

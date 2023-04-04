@@ -12,6 +12,8 @@ $(document).ready(function () {
     localStorage.removeItem("balance");
     localStorage.removeItem("allUsers");
     localStorage.removeItem("allBalance");
+    localStorage.removeItem("transactionsData")
+    localStorage.removeItem("adminTransactionsData")
     window.location = "index.html";
   });
 

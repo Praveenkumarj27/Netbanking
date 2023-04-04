@@ -5,8 +5,12 @@ $(document).ready(function () {
     localStorage.removeItem("balance");
     localStorage.removeItem("allUsers");
     localStorage.removeItem("allBalance");
+    localStorage.removeItem("transactionsData")
+    localStorage.removeItem("adminTransactionsData")
+    localStorage.removeItem("editProfile")
     window.location = "index.html";
   });
+  var db = JSON.parse(localStorage.getItem("user"));
 
   $.ajax({
     url: 'http://localhost:3000/transactions',
@@ -14,82 +18,158 @@ $(document).ready(function () {
     success: function(response) {
       var data = response;
       console.log(data);
-      function generateRowHtml(rowData) {
-        console.log(rowData);
-        var db = JSON.parse(localStorage.getItem("user"));
-        
-         console.log(db.accountNumber);
-         console.log(rowData.userAccountNumber);
 
-          return '<tr>' +
-         
-          '<td>' + rowData.senderName + '</td>' +
-          '<td>' + rowData.name + '</td>' +
-          '<td>' + rowData.currentDate + '</td>' +
-          '<td>' + rowData.currentTime + '</td>' +
-          '<td>' + rowData.amount + '</td>' +
-          '</tr>';
+      localStorage.setItem("adminTransactionsData", JSON.stringify(data));
         
-      }
-      var tableBody = $('table tbody');
-      data.forEach(function(rowData) {
-        var rowHtml = generateRowHtml(rowData);
-        tableBody.append(rowHtml);
-      });
+        $.each(data, function (i, rowData) {
+          console.log(rowData.name);
+          console.log(data.length);
+
+         
+          $("#myTable").append(`<tr>
+                    <td>  ${ rowData.senderName}  </td> 
+                    <td>  ${rowData.name}  </td> 
+                    <td>  ${rowData.currentDate}  </td> 
+                    <td>  ${rowData.currentTime}  </td> 
+                    <td>  ${rowData.amount}  </td> 
+                   
+                     </tr>`);
+                     
+      })
+      
+    }
+  })
+      var z = localStorage.getItem("adminTransactionsData");
+      var response = JSON.parse(z);
+    
 
       $(".datepicker").datepicker();
       $("#filter").click(function(){
        
-        var minDate=$("#startdate").val()
-        console.log(typeof(minDate));
-        var maxDate=$("#enddate").val()
-        console.log(minDate);
-        $.ajax({
-            url: "http://localhost:3000/transactions",
-            method: "GET",
-            success: function (response) {
-             console.log(response)
+        var minDate = $("#startdate").val();
+        var maxDate = $("#enddate").val();
+      
 
               var res=response.filter((e)=>(e.currentDate >=minDate && e.currentDate<=maxDate))
               console.log(res);
+              var filterdData = "";
+              $.each(res, function (i, e) {
+                console.log(e.name);
 
-              function filterdData(e) {
-                console.log(e);
-                return '<tr>' +
-         
-          '<td>' + e.senderName + '</td>' +
-          '<td>' + e.name + '</td>' +
-          '<td>' + e.currentDate + '</td>' +
-          '<td>' + e.currentTime + '</td>' +
-          '<td>' + e.amount + '</td>' +
-          '</tr>';
-              }
+
+                filterdData += `<tr>
+                <td>  ${e.senderName}  </td> 
+                <td>  ${e.name}  </td> 
+                <td>  ${e.currentDate}  </td> 
+                <td>  ${e.currentTime}  </td> 
+                <td>  ${e.amount}  </td> 
                
-              var filteredTableBody
-              res.forEach(function(e) {
-                var newData = filterdData(e);
-                filteredTableBody += newData
-                $('table tbody').html(filteredTableBody);
-              });
-            },
-          });
+                 </tr>`;
+           
+             if(res.length<=0){
+              $("table tbody").html("<h4>No Transactions</h4>");
+             }else{
+              $("#myTable").html(filterdData)
+             }
           
+            })
     })
 
 
-      $("#search-input").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myDataTable tr").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
+      // $("#search-input").on("keyup", function () {
+      //   var value = $(this).val().toLowerCase();
+      //   $("#myDataTable tr").filter(function () {
+      //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      //   });
+      // });
+
+      $("#search-input").keyup(function () {
+        var search = $(this).val();
+        $("table tbody tr").hide();
+        var len = $(
+          'table tbody tr:not(.notfound) td:contains("' + search + '")'
+        ).length;
+    
+        if (len > 0) {
+          // Searching text in columns and show match row
+          $('table tbody tr:not(.notfound) td:contains("' + search + '")').each(
+            function () {
+              $(this).closest("tr").show();
+            }
+          );
+        } else {
+          $(".notfound").show();
+        }
       });
 
-      // let table = new DataTable('#myDataTable')
-
-    }
-  })
+      var today = moment().format("MM/DD/YYYY");
+      console.log(today);
+      var tenDaysAgo = moment().subtract(10, "days").calendar();
+      console.log(tenDaysAgo);
+      var fifteenDaysAgo = moment().subtract(15, "days").calendar();
+      console.log(fifteenDaysAgo);
+    
+      var retriveData = localStorage.getItem("transactionsData");
+      var transData = JSON.parse(retriveData);
+      console.log(transData);
+    
+      $('select[name="filter"]').on("change", function () {
+        var ev = $(this).val();
+        console.log(ev);
+    
+        if (ev === "10days") {
+          var res = transData.filter((e) => e.currentDate >= tenDaysAgo);
+          console.log(res);
+    
+          var tenDaysData = "";
+          $.each(res, function (i, e) {
+            console.log(e.amount);
+    
+            
+    
+              tenDaysData += `<tr>
+              <td>  ${e.senderName}  </td> 
+              <td>  ${e.name}  </td> 
+              <td>  ${e.currentDate}  </td> 
+              <td>  ${e.currentTime}  </td> 
+              <td>  ${e.amount}  </td> 
+             
+               </tr>`;
+         
+          });
+    
+          if (res.length <= 0) {
+            $("table tbody").html("<h4>No Transactions</h4>");
+          } else {
+            $("#myTable").html(tenDaysData);
+          }
+        } else if (ev === "15days") {
+          var res = transData.filter((e) => e.currentDate >= fifteenDaysAgo);
+          console.log(res);
+          var fifteenDaysData = "";
+          $.each(res, function (i, e) {
+            console.log(e.amount);
+    
+         
+    
+              fifteenDaysData += `<tr>
+              <td>  ${e.senderName}  </td> 
+              <td>  ${e.name}  </td> 
+              <td>  ${e.currentDate}  </td> 
+              <td>  ${e.currentTime}  </td> 
+              <td>  ${e.amount}  </td> 
+             
+               </tr>`;
+        
+          });
+    
+          if (res.length <= 0) {
+            $("table tbody").html("<h4>No Transactions</h4>");
+          } else {
+            $("#myTable").html(fifteenDaysData);
+          }
+        }
+      });
 
 
 });
-
-

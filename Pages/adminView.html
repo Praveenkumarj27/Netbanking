@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../assets/jQuery/jQuery.js" rel="javascript"></script>
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script
+      src="../assets/bootstrap/js/bootstrap.min.js"
+      rel="javascript"
+    ></script>
+    <script src="../Js/adminView.js"></script>
+    <script src="../Js/adminProfile.js"></script>
+    <link href="../CSS/sidebar.css" rel="stylesheet" />
+    <link href="../CSS/adminView.css" rel="stylesheet" />
+    <link rel="icon" href="../assets//images/logo.ico" />
+    <!-- toastify -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav sidebar-nav">
+            <div class="sidebar-header">
+              <div class="sidebar-brand">
+                <a href="#"> Clayfin Bank </a>
+              </div>
+            </div>
+
+            <li><a href="./adminTransactions.html">Transactions </a></li>
+            <li><a href="./adminProfile.html">Profile</a></li>
+            <li><a href="#" id="logout"> Logout </a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 main-content">
+          <div class="container">
+            <div class="row" id="box">
+              <div class="col-lg-12" id="profile-3">
+                <h4 class="heading">Account Details:</h4>
+                <div class="mt-3">
+                  <b>Name:</b>
+                  <label id="name"></label>
+                </div>
+                <div>
+                  <b>Father's Name:</b>
+                  <label id="fathers-name"></label>
+                </div>
+                <div>
+                  <b>Account Number:</b>
+                  <label id="account-number"></label>
+                </div>
+                <div>
+                  <b>Aadhar Number:</b>
+                  <label id="aadhar-number"></label>
+                </div>
+                <div>
+                  <b>Pan Number:</b>
+                  <label id="pan-number"></label>
+                </div>
+                <div>
+                  <b>Aadhar image:</b>
+                  <a id="aadhar-img">aadhar-image</a>
+                </div>
+                <div class="mt-2">
+                  <b>Pan image:</b>
+                  <a id="pan-img">pan-image</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

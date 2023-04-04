@@ -8,6 +8,8 @@ $(document).ready(function () {
     localStorage.removeItem("balance");
     localStorage.removeItem("allUsers");
     localStorage.removeItem("allBalance");
+    localStorage.removeItem("transactionsData")
+    localStorage.removeItem("adminTransactionsData")
     window.location = "index.html";
   });
 
@@ -53,7 +55,7 @@ $(document).ready(function () {
     console.log(updatedName);
 
     $.ajax({
-      type: "PUT",
+      type: "PATCH",
       url: `http://localhost:3000/users/${db.id}`,
       data: {
         name: updatedName,

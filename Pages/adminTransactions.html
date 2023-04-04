@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="../assets/jQuery/jQuery.js" rel="javascript"></script>
+    <script src="../assets/moment/moment.js" rel="javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <script
@@ -28,6 +29,8 @@
     <script type="application/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script> 
    <!-- toastify -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -56,14 +59,28 @@
              <div class="col-lg-4">
                 <input type="text" class="form-control" id="search-input" placeholder="search"> 
               </div> 
-
-              <div class="col-lg-12 mt-3">
+              <button id="download-btn">Download PDF</button>
+<div class="row mt-2">
+              <div class="col-10">
                 <label>Start date:</label>
-                <input id="startdate" class="datepicker"></input>
+                <input id="startdate" class="datepicker col-3"></input>
                 <label>End date:</label>
-                <input id="enddate" class="datepicker"></input>
+                <input id="enddate" class="datepicker col-3"></input>
                 <button id="filter" class="btn btn-primary">Filter</button>
+              </div>
+                <div class="form-group col-2">         
+                  <select name="filter" id="filteredData" class="form-control">
+                    <option value="">Select </option>
+                    <option value="10days">10 days</option>
+                    <option value="15days">15 days</option>
+                  </select>
                
+               
+              </div>
+
+
+
+
                 <table class="table mt-2" id="myDataTable">
                   <thead class="thead-dark">
                     <tr>
@@ -93,4 +110,20 @@
   </div>
 </div>
 </body>
+<script>
+  $("#download-btn").click( function ()  {
+    html2canvas($('#myDataTable')[0], {
+        onrendered: function (canvas) {
+            var data = canvas.toDataURL();
+            var docDefinition = {
+                content: [{
+                    image: data,
+                    width: 500
+                }]
+            };
+            pdfMake.createPdf(docDefinition).download("tableData.pdf");
+        }
+    });
+});
+</script>
 </html> 
